@@ -15,7 +15,7 @@
 Нужно склонировать репозиторий к себе и установить зависимости:
 
 ```bash
-git clone https://githib.com/border-radius/particles
+git clone https://github.com/border-radius/particles
 cd particles
 npm i
 ```
