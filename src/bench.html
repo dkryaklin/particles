@@ -5,10 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Assay</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>body { overflow: hidden; } #fps_meter { position: absolute; right: 0; top: 0; color: red; z-index: 1 }</style>
+    <style>
+        body { overflow: hidden; } 
+        #bench { position: absolute; left: 0; top: 0; z-index: 10000 }
+        #fps_meter { color: red }
+    </style>
 </head>
 <body>
-    <div id="fps_meter"></div>
+    <div id="bench">
+        <div id="fps_meter"></div>
+        <input type="text" id="bench_amount" value="100" placeholder="кол-во"/>
+        <div>
+            <input type="checkbox" checked="true" id="bench_switch"/>
+            <label for="bench_switch">новый/старый</label>
+        </div>
+    </div>
     <script src="scripts/bench.js"></script>
 </body>
 </html>

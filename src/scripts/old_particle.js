@@ -69,4 +69,9 @@ export default class Particle {
         const timeout = 100
         const interval = setInterval(this.moveRandomly.bind(this), timeout)
     }
+
+    remove() {
+        clearInterval(this.interval)
+        this.el.remove()
+    }
 }

@@ -1,16 +1,42 @@
-//import Particle from './old_particle'
+import OldParticle from './old_particle'
 import Particle from './particle'
 import fpsMeter from './fps_meter'
 
-const BENCH_AMOUNT = 2000
+let amount = 20
+let isNew = true
+let particles = []
 
 fpsMeter(document.querySelector('#fps_meter'))
 
-const particles = []
+document.querySelector('#bench_amount').addEventListener('change', (event) => {
+  amount = parseInt(event.target.value)
+  startBench()
+})
 
-for (let i = 0; i < BENCH_AMOUNT; i++) {
-  const initialX = Math.random() * 1000
-  const initialY = Math.random() * 1000
+document.querySelector('#bench_switch').addEventListener('change', (event) => {
+  isNew = event.target.checked
+  startBench()
+})
 
-  particles.push(new Particle(initialX, initialY))
+function startBench() {
+  if (particles.length) {
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].remove()
+    }
+    particles = []
+  }
+
+  for (let i = 0; i < amount; i++) {
+    const initialX = Math.random() * 1000
+    const initialY = Math.random() * 1000
+  
+    if (isNew) {
+      particles.push(new Particle(initialX, initialY))
+    } else {
+      particles.push(new OldParticle(initialX, initialY))
+    }
+    
+  }
 }
+
+startBench()
